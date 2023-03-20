@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 // eslint-disable-next-line no-unused-vars
-import { getAuth, signInWithRedirect, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, signInWithRedirect, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
 
 
@@ -53,3 +53,12 @@ export const createAuthUserWithemailandPassword = async (email, password) => {
 
     return await createUserWithEmailAndPassword(auth, email, password);
 }
+
+export const signInAuthUserWithemailandPassword = async (email, password) => {
+    if(!email || !password) return;
+
+    return await signInWithEmailAndPassword(auth, email, password);
+}
+
+export const signOutUser = async () => await signOut(auth);
+export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth, callback);
