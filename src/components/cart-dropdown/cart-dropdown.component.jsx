@@ -1,12 +1,14 @@
 import Button from '../button/button.component';
 import './cart-dropdown.styles.scss';
+import CartItem from '../cart-item/cart-item.component';
 
 const CartDropDown = () => {
-    return(
+    return (
         <div className="cart-dropdown-container">
             <div className="cart-items">
-                <Button>Go To CheckOut</Button>
+                {[].map(item => <CartItem cartItem={item} /> )}
             </div>
+            <Button>Go To CheckOut</Button>
         </div>
     );
 }
